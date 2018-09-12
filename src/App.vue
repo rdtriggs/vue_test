@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <h1>{{ getFullName(firstName, lastName).name }}</h1>
+    <p>Title: {{ movieTitle }}</p>
+    <p>Released: {{ movieReleaseDate }}</p>
+    <p>The movie is {{ oldOrNew(movieReleaseDate) ? 'old' : 'new' }}.</p>
+    <div v-bind:title="movieTitle">Hover your mouse here</div>
   </div>
 </template>
 
@@ -10,16 +13,13 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      firstName: 'Ryan',
-      lastName: 'Triggs'
+      movieTitle: 'War Games',
+      movieReleaseDate: 1983
     }
   },
   methods: {
-    getFullName: function(first, last) {
-      return { 
-        name: first + ' ' + last
-      }
+    oldOrNew: function(movieReleaseDate) {
+      return movieReleaseDate < 2000;
     }
   }
 }
